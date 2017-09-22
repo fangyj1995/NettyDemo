@@ -6,7 +6,11 @@
 
     <groupId>edu.fang</groupId>
     <artifactId>NettyDemo</artifactId>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>IMChat</module>
+    </modules>
     <dependencies>
         <!-- https://mvnrepository.com/artifact/io.netty/netty-all -->
         <dependency>
