@@ -1,13 +1,12 @@
 package edu.nju.fyj.imchat.protocol.codec;
 
-import edu.nju.fyj.imchat.protocol.Message;
+import edu.nju.fyj.imchat.entity.Packet;
 import edu.nju.fyj.imchat.serialization.marshall.MarshallingCodeCFactory;
 import edu.nju.fyj.imchat.serialization.marshall.NettyMarshallingEncoder;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.MessageToMessageEncoder;
-import io.netty.handler.codec.marshalling.MarshallingEncoder;
 
 import java.io.IOException;
 import java.util.List;
@@ -16,7 +15,7 @@ import java.util.Map;
 /**
  * Created by fangyj on 2017/9/24.
  */
-public class MessageEncoder extends MessageToMessageEncoder<Message>{
+public class MessageEncoder extends MessageToMessageEncoder<Packet>{
 
     NettyMarshallingEncoder marshallingEncoder;
 
@@ -25,7 +24,7 @@ public class MessageEncoder extends MessageToMessageEncoder<Message>{
     }
 
     @Override
-    protected void encode(ChannelHandlerContext ctx, Message msg, List<Object> out) throws Exception {
+    protected void encode(ChannelHandlerContext ctx, Packet msg, List<Object> out) throws Exception {
         if(msg == null || msg.getHeader() == null)
             throw new IllegalArgumentException("encode msg is null");
 

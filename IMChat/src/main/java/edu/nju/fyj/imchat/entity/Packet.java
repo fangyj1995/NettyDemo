@@ -1,11 +1,13 @@
-package edu.nju.fyj.imchat.protocol;
+package edu.nju.fyj.imchat.entity;
+
+import edu.nju.fyj.imchat.protocol.Header;
 
 /**
  * Created by fangyj on 2017/9/24.
  */
-public class Message {
+public class Packet {
     private Header header;
-    private Object body;
+    private Body body;
 
     public Header getHeader() {
         return header;
@@ -15,17 +17,17 @@ public class Message {
         this.header = header;
     }
 
-    public Object getBody() {
+    public Body getBody() {
         return body;
     }
 
-    public void setBody(Object body) {
+    public void setBody(Body body) {
         this.body = body;
     }
 
     @Override
     public String toString() {
-        return "Message{" +
+        return "Packet{" +
                 "header=" + header +
                 ", body=" + body +
                 '}';
