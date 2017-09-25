@@ -1,23 +1,14 @@
-package edu.nju.fyj.imchat.entity;
-
-import java.util.Date;
+package edu.nju.fyj.imchat.entity.body;
 
 /**
  * Created by yajfang on 2017/9/25.
  */
-public class Body {
-    private long createTime = new Date().getTime();
+public class Message extends Body{
+
     private String sender;
     private String receiver;
     private String token;
     private String content;
-
-    public Body(String sender, String receiver, String token, String content) {
-        this.sender = sender;
-        this.receiver = receiver;
-        this.token = token;
-        this.content = content;
-    }
 
     public String getToken() {
         return token;
@@ -25,14 +16,6 @@ public class Body {
 
     public void setToken(String token) {
         this.token = token;
-    }
-
-    public long getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(long createTime) {
-        this.createTime = createTime;
     }
 
     public String getSender() {
@@ -61,11 +44,11 @@ public class Body {
 
     @Override
     public String toString() {
-        return "Body{" +
-                "createTime=" + createTime +
-                ", sender='" + sender + '\'' +
+        return "Message{" +
+                "sender='" + sender + '\'' +
                 ", receiver='" + receiver + '\'' +
+                ", token='" + token + '\'' +
                 ", content='" + content + '\'' +
-                '}';
+                "} " + super.toString();
     }
 }

@@ -9,7 +9,10 @@ import io.netty.channel.Channel;
  */
 public interface ResponseService {
     public void sendLoginSuccess(ClientSession session);
+
     public void sendLoginError(Channel channel);
+
     public void sendAuthError(Channel channel);
+
     public void sendHeartbeat(Channel channel);
 }

@@ -6,7 +6,6 @@ import edu.nju.fyj.imchat.connection.SessionManager;
  * Created by yajfang on 2017/9/25.
  */
 public class TokenManager {
-    private TokenGenerator tokenGenerator = TokenGenerator.getInstance();
     private SessionManager sessionManager = SessionManager.getInstance();
 
     private static volatile TokenManager instance;
@@ -24,7 +23,7 @@ public class TokenManager {
     }
 
     public String allocateToken(String uid) {
-        String token = tokenGenerator.generateToken(uid);
+        String token = TokenGenerator.generateToken(uid);
         return token;
     }
 
@@ -33,12 +32,5 @@ public class TokenManager {
         return realToken != null && token.equals(realToken);
     }
 
-    public TokenGenerator getTokenGenerator() {
-        return tokenGenerator;
-    }
-
-    public void setTokenGenerator(TokenGenerator tokenGenerator) {
-        this.tokenGenerator = tokenGenerator;
-    }
 
 }

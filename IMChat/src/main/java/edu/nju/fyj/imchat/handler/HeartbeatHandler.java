@@ -1,9 +1,9 @@
 package edu.nju.fyj.imchat.handler;
 
-import edu.nju.fyj.imchat.entity.Body;
+import edu.nju.fyj.imchat.entity.body.Body;
 import edu.nju.fyj.imchat.entity.Packet;
-import edu.nju.fyj.imchat.protocol.Header;
-import edu.nju.fyj.imchat.protocol.PacketType;
+import edu.nju.fyj.imchat.entity.Header;
+import edu.nju.fyj.imchat.constant.PacketType;
 import edu.nju.fyj.imchat.service.response.ResponseService;
 import edu.nju.fyj.imchat.service.response.impl.ResponseServiceImpl;
 import io.netty.channel.ChannelHandlerContext;

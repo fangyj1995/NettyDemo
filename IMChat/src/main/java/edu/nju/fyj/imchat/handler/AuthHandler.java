@@ -1,13 +1,14 @@
 package edu.nju.fyj.imchat.handler;
 
 import edu.nju.fyj.imchat.connection.ClientSession;
+import edu.nju.fyj.imchat.entity.body.Message;
 import edu.nju.fyj.imchat.service.auth.AuthService;
 import edu.nju.fyj.imchat.connection.SessionManager;
-import edu.nju.fyj.imchat.entity.Body;
-import edu.nju.fyj.imchat.entity.Login;
+import edu.nju.fyj.imchat.entity.body.Body;
+import edu.nju.fyj.imchat.entity.body.Login;
 import edu.nju.fyj.imchat.entity.Packet;
-import edu.nju.fyj.imchat.protocol.Header;
-import edu.nju.fyj.imchat.protocol.PacketType;
+import edu.nju.fyj.imchat.entity.Header;
+import edu.nju.fyj.imchat.constant.PacketType;
 import edu.nju.fyj.imchat.service.response.ResponseService;
 import edu.nju.fyj.imchat.service.response.impl.ResponseServiceImpl;
 import io.netty.channel.ChannelHandlerContext;
@@ -28,7 +29,7 @@ public class AuthHandler extends SimpleChannelInboundHandler<Packet> {
         Header header = msg.getHeader();
         Body body = msg.getBody();
 
-        if(header.getType() == PacketType.HANDSHAKE_REQUEST) {//握手请求,处理登录
+        if(header.getType() == PacketType.LOGIN_REQUEST) {//握手请求,处理登录
             //登录信息
             Login login = (Login) body;
             if(authService.authLogin(login.getUid(), login.getPwd())) {//验证登录信息成功
@@ -48,9 +49,8 @@ public class AuthHandler extends SimpleChannelInboundHandler<Packet> {
             }
         } else {//其他请求
             //验证token
-            sessionManager.getSession(body.getSender()).getChannel();
-
-            if(authService.authToken(body.getSender(), body.getToken())) {
+            Message message = (Message)body;
+            if(authService.authToken(message.getSender(), message.getToken())) {
                 //认证成功，传递请求
                 ctx.fireChannelRead(msg);
             } else {
@@ -61,4 +61,9 @@ public class AuthHandler extends SimpleChannelInboundHandler<Packet> {
         }
     }
 
+    @Override
+    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
+        cause.printStackTrace();
+        ctx.channel().close();
+    }
 }

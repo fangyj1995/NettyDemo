@@ -1,5 +1,7 @@
 package edu.nju.fyj.imchat.service.auth;
 
+import java.util.HashMap;
+
 /**
  * Created by yajfang on 2017/9/25.
  */
@@ -7,8 +9,16 @@ public class AuthService {
 
     private TokenManager tokenManager = TokenManager.getInstance();
 
-    public boolean authLogin(String uid, String password) {//TODO
-        return true;
+    private static HashMap<String, String> whiteList = new HashMap<String, String>();
+    static {
+        whiteList.put("fyj","12345");
+        whiteList.put("lyj","12345");
+        whiteList.put("lcy","12345");
+        whiteList.put("csh","12345");
+    }
+
+    public boolean authLogin(String uid, String password) {
+        return password.equals(whiteList.get(uid));
     }
 
     public boolean authToken(String uid, String token) {

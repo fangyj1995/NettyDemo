@@ -1,6 +1,6 @@
 package edu.nju.fyj.imchat.entity;
 
-import edu.nju.fyj.imchat.protocol.Header;
+import edu.nju.fyj.imchat.entity.body.Body;
 
 /**
  * Created by fangyj on 2017/9/24.

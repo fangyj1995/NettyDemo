@@ -1,4 +1,4 @@
-package edu.nju.fyj.imchat.protocol;
+package edu.nju.fyj.imchat.entity;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -7,7 +7,7 @@ import java.util.Map;
  * Created by fangyj on 2017/9/24.
  */
 public class Header {
-    private int crcCode = 0xabef0101;
+    private int crcCode;
     private int length;
     private long sessionId;
     private byte type;

@@ -1,7 +1,8 @@
-package edu.nju.fyj.imchat.protocol.codec;
+package edu.nju.fyj.imchat.codec;
 
+import edu.nju.fyj.imchat.entity.body.Body;
 import edu.nju.fyj.imchat.entity.Packet;
-import edu.nju.fyj.imchat.protocol.Header;
+import edu.nju.fyj.imchat.entity.Header;
 import edu.nju.fyj.imchat.serialization.marshall.MarshallingCodeCFactory;
 import edu.nju.fyj.imchat.serialization.marshall.NettyMarshallingDecoder;
 import io.netty.buffer.ByteBuf;
@@ -62,7 +63,7 @@ public class MessageDecoder extends LengthFieldBasedFrameDecoder{
 
         //decode body
         if(frame.readableBytes() > 0) {
-            msg.setBody(marshallingDecoder.decode(ctx, frame));
+            msg.setBody((Body)marshallingDecoder.decode(ctx, frame));
         }
         msg.setHeader(header);
         return msg;

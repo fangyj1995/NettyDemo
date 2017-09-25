@@ -1,17 +1,11 @@
-package edu.nju.fyj.imchat.entity;
+package edu.nju.fyj.imchat.entity.body;
 
 /**
  * Created by yajfang on 2017/9/25.
  */
 public class Login extends Body{
-    private String uid;
     private String pwd;
-
-    public Login(String sender, String receiver, String token, String content, String uid, String pwd) {
-        super(sender, receiver, token, content);
-        this.uid = uid;
-        this.pwd = pwd;
-    }
+    private String uid;
 
     public String getUid() {
         return uid;
@@ -19,6 +13,14 @@ public class Login extends Body{
 
     public void setUid(String uid) {
         this.uid = uid;
+    }
+
+    @Override
+    public String toString() {
+        return "Login{" +
+                "pwd='" + pwd + '\'' +
+                ", uid='" + uid + '\'' +
+                "} " + super.toString();
     }
 
     public String getPwd() {

@@ -1,4 +1,4 @@
-package edu.nju.fyj.imchat.protocol.codec;
+package edu.nju.fyj.imchat.codec;
 
 import edu.nju.fyj.imchat.entity.Packet;
 import edu.nju.fyj.imchat.serialization.marshall.MarshallingCodeCFactory;
@@ -33,6 +33,8 @@ public class MessageEncoder extends MessageToMessageEncoder<Packet>{
         sendBuf.writeInt(msg.getHeader().getCrcCode());
         //写入长度
         sendBuf.writeInt(msg.getHeader().getLength());
+        //写入sessionId
+        sendBuf.writeLong(msg.getHeader().getSessionId());
         //写入消息类型
         sendBuf.writeInt(msg.getHeader().getType());
         //写入附件个数
